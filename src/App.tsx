@@ -1,6 +1,9 @@
 import React from "react";
-import logo from "./logo.svg";
+
 import "./App.css";
+
+//4 - Imporntando
+import FirstComponent from "./components/FirstComponent";
 
 function App() {
   //1 - Variáveis
@@ -21,6 +24,7 @@ function App() {
       <p>Idade: {age}</p>
       {isWorking && <p>Está trabalhando</p>}
       <h3>{userGreetubg(name)}</h3>
+      <FirstComponent />
     </div>
   );
 }
