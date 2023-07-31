@@ -5,6 +5,10 @@ import "./App.css";
 //4 - Imporntando
 import FirstComponent from "./components/FirstComponent";
 
+//5 - Desestruturando props
+import SecondComponent from "./components/SecondComponent";
+import Destructuring from "./components/Destructuring";
+
 function App() {
   //1 - Variáveis
   const name: string = "Yuri";
@@ -25,6 +29,19 @@ function App() {
       {isWorking && <p>Está trabalhando</p>}
       <h3>{userGreetubg(name)}</h3>
       <FirstComponent />
+      <SecondComponent name={"Iury"} />
+      <Destructuring
+        title="Primeiro post"
+        content="Exemplo"
+        commentsQty={10}
+        tags={["JS", "TS"]}
+      />
+      <Destructuring
+        title="Segundo post"
+        content="Exemplo 2"
+        commentsQty={5}
+        tags={["backend", "frontkend"]}
+      />
     </div>
   );
 }
