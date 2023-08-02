@@ -1,4 +1,4 @@
-import React from "react";
+import React, { createContext } from "react";
 
 import "./App.css";
 
@@ -15,6 +15,15 @@ import State from "./components/State";
 //8 - Type
 type textOrNull = string | null;
 type fixed = "Oi" | "Olá" | "Bom dia!";
+
+// 9 - Context
+interface IAppContext {
+  language: string;
+  framework: string;
+  projects: number;
+}
+
+export const AppContext = createContext<IAppContext | null>(null);
 
 function App() {
   //1 - Variáveis
@@ -36,33 +45,43 @@ function App() {
 
   const testandoFixed: fixed = "Oi"; //Ele não permite qualquer outro tipo de texto, nem um 'oi'
 
+  //9 - Context
+  const contextValue: IAppContext = {
+    language: "Javascript",
+    framework: "Express",
+    projects: 5,
+  };
+
   return (
-    <div className="App">
-      <h1>React com typeScript</h1>
-      <h2>Nome: {name}</h2>
-      <p>Idade: {age}</p>
-      {isWorking && <p>Está trabalhando</p>}
-      <h3>{userGreetubg(name)}</h3>
-      <FirstComponent />
-      <SecondComponent name={"Iury"} />
-      <Destructuring
-        title="Primeiro post"
-        content="Exemplo"
-        commentsQty={10}
-        tags={["JS", "TS"]}
-        category={Category.P}
-      />
-      <Destructuring
-        title="Segundo post"
-        content="Exemplo 2"
-        commentsQty={5}
-        tags={["backend", "frontkend"]}
-        category={Category.TS}
-      />
-      <State />
-      {myText && <p>O texto na variável é: {myText}</p>}
-      {mySecondText && <p>O texto na segunda variável é: {mySecondText}</p>}
-    </div>
+    <AppContext.Provider value={contextValue}>
+      <div className="App">
+        <h1>React com typeScript</h1>
+        <h2>Nome: {name}</h2>
+        <p>Idade: {age}</p>
+        {isWorking && <p>Está trabalhando</p>}
+        <h3>{userGreetubg(name)}</h3>
+        <FirstComponent />
+        <SecondComponent name={"Iury"} />
+        <Destructuring
+          title="Primeiro post"
+          content="Exemplo"
+          commentsQty={10}
+          tags={["JS", "TS"]}
+          category={Category.P}
+        />
+        <Destructuring
+          title="Segundo post"
+          content="Exemplo 2"
+          commentsQty={5}
+          tags={["backend", "frontkend"]}
+          category={Category.TS}
+        />
+        <State />
+        {myText && <p>O texto na variável é: {myText}</p>}
+        {mySecondText && <p>O texto na segunda variável é: {mySecondText}</p>}
+        {testandoFixed && <p>O texto fixo é: {testandoFixed}</p>}
+      </div>
+    </AppContext.Provider>
   );
 }
 
