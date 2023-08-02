@@ -12,6 +12,10 @@ import Destructuring, { Category } from "./components/Destructuring";
 //6 - useState
 import State from "./components/State";
 
+//8 - Type
+type textOrNull = string | null;
+type fixed = "Oi" | "Olá" | "Bom dia!";
+
 function App() {
   //1 - Variáveis
   const name: string = "Yuri";
@@ -23,6 +27,14 @@ function App() {
     //Tipando o parametro e o retorno
     return `Olá ${name}`;
   };
+
+  //8 - type
+  const myText: textOrNull = "Exemplo de texto qualquer";
+  let mySecondText: textOrNull = null;
+
+  mySecondText = null;
+
+  const testandoFixed: fixed = "Oi"; //Ele não permite qualquer outro tipo de texto, nem um 'oi'
 
   return (
     <div className="App">
@@ -48,6 +60,8 @@ function App() {
         category={Category.TS}
       />
       <State />
+      {myText && <p>O texto na variável é: {myText}</p>}
+      {mySecondText && <p>O texto na segunda variável é: {mySecondText}</p>}
     </div>
   );
 }
