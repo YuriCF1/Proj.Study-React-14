@@ -12,6 +12,9 @@ import Destructuring, { Category } from "./components/Destructuring";
 //6 - useState
 import State from "./components/State";
 
+//10 - Utilizando o context
+import Context from "./components/Context";
+
 //8 - Type
 type textOrNull = string | null;
 type fixed = "Oi" | "Olá" | "Bom dia!";
@@ -80,6 +83,7 @@ function App() {
         {myText && <p>O texto na variável é: {myText}</p>}
         {mySecondText && <p>O texto na segunda variável é: {mySecondText}</p>}
         {testandoFixed && <p>O texto fixo é: {testandoFixed}</p>}
+        <Context />
       </div>
     </AppContext.Provider>
   );
